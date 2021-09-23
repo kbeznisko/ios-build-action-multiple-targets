@@ -59,6 +59,15 @@ Run the `pod install` command during the build.
 
 The path to the Podfile. Default `"Podfile"`
 
+### `extra-certificate`
+
+Boolean to tell if app is using any extra certificate, e.g. for any share extension or widget. Default `false`
+
+### `p12-base64-extra`
+
+Base64 encoded p12 file (key + cert), for extra signing (use same password for all certificates). **Required** if `extra-certificate` set to true, default `""`
+
+
 ## Example usage
 
 ### single p12
