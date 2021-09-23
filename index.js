@@ -2,12 +2,12 @@ import { getInput, setFailed } from "@actions/core";
 import { exec as _exec } from "@actions/exec";
 
 async function run() {
-  try {    
+  try {
     if (!getInput("p12-base64")) {
       throw new Error("P12 keys missing or in the wrong format.");
     }
     process.env.PROJECT_PATH = getInput("project-path");
-    process.env.P12_BASE64 = getInput("p12-base64");    
+    process.env.P12_BASE64 = getInput("p12-base64");
     process.env.MOBILEPROVISION_BASE64 = getInput("mobileprovision-base64");
     process.env.CODE_SIGNING_IDENTITY = getInput("code-signing-identity");
     process.env.TEAM_ID = getInput("team-id");
@@ -20,6 +20,8 @@ async function run() {
     process.env.DISABLE_TARGETS = getInput("disable-targets");
     process.env.BUILD_PODS = getInput("build-pods");
     process.env.PODS_PATH = getInput("pods-path");
+    process.env.EXTRA_CERTIFICATE = getInput("extra-certificate");
+    process.env.P12_BASE64_EXTRA = getInput("p12-base64-extra");
     await _exec(`bash ${__dirname}/../build.sh`);
   } catch (error) {
     setFailed(error.message);

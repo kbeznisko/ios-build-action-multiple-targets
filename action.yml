@@ -1,5 +1,5 @@
 name: "iOS Build/Release Action"
-author: "hectorguerrini"
+author: "kumarsunil0007"
 branding:  
   icon: 'smartphone'
   color: 'green'
@@ -56,6 +56,13 @@ inputs:
     description: "The path to the Podfile."
     required: false
     default: "Podfile"
+  extra-certificate:
+    description: "Boolean to tell if app is using any extra certificate, e.g. for any share extension or widget"
+    required: false
+    default: false
+  p12-base64-extra:
+    description: "Base64 encoded p12 file (key + cert), for extra signing (use same password for all certificates)"
+    required: false  
 runs:
   using: "node12"
   main: "dist/index.js"

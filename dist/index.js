@@ -1711,12 +1711,12 @@ __nccwpck_require__.r(__webpack_exports__);
 
 
 async function run() {
-  try {    
+  try {
     if (!(0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("p12-base64")) {
       throw new Error("P12 keys missing or in the wrong format.");
     }
     process.env.PROJECT_PATH = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("project-path");
-    process.env.P12_BASE64 = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("p12-base64");    
+    process.env.P12_BASE64 = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("p12-base64");
     process.env.MOBILEPROVISION_BASE64 = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("mobileprovision-base64");
     process.env.CODE_SIGNING_IDENTITY = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("code-signing-identity");
     process.env.TEAM_ID = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("team-id");
@@ -1729,6 +1729,8 @@ async function run() {
     process.env.DISABLE_TARGETS = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("disable-targets");
     process.env.BUILD_PODS = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("build-pods");
     process.env.PODS_PATH = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("pods-path");
+    process.env.EXTRA_CERTIFICATE = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("extra-certificate");
+    process.env.P12_BASE64_EXTRA = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("p12-base64-extra");
     await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec)(`bash ${__dirname}/../build.sh`);
   } catch (error) {
     (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(error.message);
@@ -1736,6 +1738,7 @@ async function run() {
 }
 
 run();
+
 })();
 
 module.exports = __webpack_exports__;

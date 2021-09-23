@@ -21,6 +21,16 @@ platform :ios do
     keychain_password: keychain_password,
     log_output: true
     )
+
+    if ENV["EXTRA_CERTIFICATE"] == 'true'
+        import_certificate(
+        certificate_path: "ios-build-extra.p12",
+        certificate_password: ENV["CERTIFICATE_PASSWORD"],
+        keychain_name: "ios-build.keychain",
+        keychain_password: keychain_password,
+        log_output: true
+        )
+    end
   
     install_provisioning_profile(
       path: "ios-build.mobileprovision"
