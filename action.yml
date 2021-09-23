@@ -1,8 +1,8 @@
-name: "iOS Build/Release Action"
+name: "iOS Build/Release With Multiple tasrgets Action"
 author: "kumarsunil0007"
 branding:  
   icon: 'smartphone'
-  color: 'green'
+  color: 'red'
 description: "Build iOS project (.xcodeproj, .xcworkspace) and export .ipa"
 inputs:
   project-path:
