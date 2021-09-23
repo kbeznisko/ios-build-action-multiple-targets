@@ -14,7 +14,7 @@ cp -r ${script_path}/Gemfile ./
 echo $P12_BASE64 | base64 --decode > ios-build.p12
 echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
 
-if[[ $EXTRA_CERTIFICATE = true ]]; then
+if [[ $EXTRA_CERTIFICATE = true ]]; then
     echo $P12_BASE64_EXTRA | base64 --decode > ios-build-extra.p12
 fi
 
