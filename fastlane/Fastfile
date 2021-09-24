@@ -22,15 +22,15 @@ platform :ios do
     log_output: true
     )
 
-    if ENV["EXTRA_CERTIFICATE"] == 'true'
-        import_certificate(
-        certificate_path: "ios-build-extra.p12",
-        certificate_password: ENV["CERTIFICATE_PASSWORD"],
-        keychain_name: "ios-build.keychain",
-        keychain_password: keychain_password,
-        log_output: true
-        )
-    end
+    # if ENV["EXTRA_CERTIFICATE"] == 'true'
+    #     import_certificate(
+    #     certificate_path: "ios-build-extra.p12",
+    #     certificate_password: ENV["CERTIFICATE_PASSWORD"],
+    #     keychain_name: "ios-build.keychain",
+    #     keychain_password: keychain_password,
+    #     log_output: true
+    #     )
+    # end
   
     install_provisioning_profile(
       path: "ios-build.mobileprovision"
@@ -46,6 +46,15 @@ platform :ios do
         xcodeproj: ENV["PROJECT_PATH"],
         profile: "ios-build.mobileprovision",        
     )
+
+    if ENV["EXTRA_PROVISIONING"] == 'true'
+        update_project_provisioning(
+        xcodeproj: ENV["PROJECT_PATH"],
+        target_filter: ENV["TARGET_FILTER"],
+        profile: "ios-build-extension.mobileprovision",        
+        )
+    end
+
     update_project_team(
       path: ENV["PROJECT_PATH"],
       teamid: ENV["TEAM_ID"]

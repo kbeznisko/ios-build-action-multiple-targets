@@ -56,13 +56,17 @@ inputs:
     description: "The path to the Podfile."
     required: false
     default: "Podfile"
-  extra-certificate:
-    description: "Boolean to tell if app is using any extra certificate, e.g. for any share extension or widget"
+  extra-provisioning-profile:
+    description: "Boolean to tell if app is using any extra mobileprovision, e.g. for any share extension or widget."
     required: false
     default: false
-  p12-base64-extra:
-    description: "Base64 encoded p12 file (key + cert), for extra signing (use same password for all certificates)"
-    required: false  
+  mobileprovision-base64-extra:
+    description: "Base64 encoded mobileprovision file, for signing of other targets"
+    required: false
+  target-type-filter:
+    description: "value can be used to only update code signing for the specified targets, e.g. '.*WatchKit App.*','.*Share Extension.*' etc."
+    required: false
+    default: ".*Share Extension.*"    
 runs:
   using: "node12"
   main: "dist/index.js"

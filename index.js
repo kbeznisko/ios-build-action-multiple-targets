@@ -20,8 +20,11 @@ async function run() {
     process.env.DISABLE_TARGETS = getInput("disable-targets");
     process.env.BUILD_PODS = getInput("build-pods");
     process.env.PODS_PATH = getInput("pods-path");
-    process.env.EXTRA_CERTIFICATE = getInput("extra-certificate");
-    process.env.P12_BASE64_EXTRA = getInput("p12-base64-extra");
+    process.env.EXTRA_PROVISIONING = getInput("extra-provisioning-profile");
+    process.env.MOBILEPROVISION_BASE64_EXTRA = getInput(
+      "mobileprovision-base64-extra"
+    );
+    process.env.TARGET_FILTER = getInput("target-type-filter");
     await _exec(`bash ${__dirname}/../build.sh`);
   } catch (error) {
     setFailed(error.message);

@@ -1,6 +1,5 @@
 # iOS Build and Release Action
 
-
 ## Inputs
 
 ### `project-path`
@@ -49,7 +48,7 @@ Output path of ipa. Default `"output.ipa"`.
 
 ### `disable-targets`
 
-These targets will not use automatic code signing and instead use the identity specified in other inputs. Input targets separated by ','. For example, 'MyApp,YourApp'. Default "".  (default to all targets)
+These targets will not use automatic code signing and instead use the identity specified in other inputs. Input targets separated by ','. For example, 'MyApp,YourApp'. Default "". (default to all targets)
 
 ### `build-pods`
 
@@ -59,14 +58,17 @@ Run the `pod install` command during the build.
 
 The path to the Podfile. Default `"Podfile"`
 
-### `extra-certificate`
+### `extra-provisioning-profile`
 
-Boolean to tell if app is using any extra certificate, e.g. for any share extension or widget. Default `false`
+Boolean to tell if app is using any extra mobileprovision, e.g. for any share extension or widget. Default `false`
 
-### `p12-base64-extra`
+### `mobileprovision-base64-extra`
 
-Base64 encoded p12 file (key + cert), for extra signing (use same password for all certificates). **Required** if `extra-certificate` set to true, default `""`
+Base64 encoded mobileprovision file, for signing of other targets . **Required** if `extra-provision-profile` set to true, default `""`
 
+### `target-type-filter`
+
+value can be used to only update code signing for the specified targets, e.g. `'.*WatchKit App.*'`,`'.*Share Extension.*'` etc., default `'.*Share Extension.*'`
 
 ## Example usage
 
