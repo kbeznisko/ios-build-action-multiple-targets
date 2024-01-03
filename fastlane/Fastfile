@@ -4,12 +4,10 @@ platform :ios do
   desc "Export ipa"
   lane :export_ipa do
 
-    keychain_password = SecureRandom.uuid
-
     create_keychain(
       name: "ios-build.keychain",
-      password: keychain_password,
-      default_keychain: true,
+      password: "",
+      default_keychain: false,
       unlock: true,
       timeout: 3600
     )
@@ -18,7 +16,7 @@ platform :ios do
     certificate_path: "ios-build.p12",
     certificate_password: ENV["CERTIFICATE_PASSWORD"],
     keychain_name: "ios-build.keychain",
-    keychain_password: keychain_password,
+    keychain_password: "",
     log_output: true
     )
 
@@ -27,7 +25,7 @@ platform :ios do
     #     certificate_path: "ios-build-extra.p12",
     #     certificate_password: ENV["CERTIFICATE_PASSWORD"],
     #     keychain_name: "ios-build.keychain",
-    #     keychain_password: keychain_password,
+    #     keychain_password: "",
     #     log_output: true
     #     )
     # end
